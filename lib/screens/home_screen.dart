@@ -7,6 +7,12 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  int _buttonIndex = 0;
+
+  final Widgets = [
+    Container()
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

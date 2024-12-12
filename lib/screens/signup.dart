@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_firebase_app/screens/home_screen.dart';
+import 'package:todo_firebase_app/screens/login.dart';
 import 'package:todo_firebase_app/screens/services/auth_service.dart';
 class SignupScreen extends StatelessWidget {
    SignupScreen({super.key});
@@ -66,18 +68,44 @@ class SignupScreen extends StatelessWidget {
                   )
               ),
             ),
-            SizedBox(height: 50),
+            SizedBox(height: 50,
+              width: MediaQuery.of(context).size.width/1.5,
+
+            ),
             ElevatedButton(
                 onPressed: () async {
                   User? user = await _auth.RegisterWithEmailAndPassword(
                       _emailController.text,
                       _passController.text );
                   if(user != null) {
-                    Navigator.push(context, MaterialPageRoute(builder: builder))
+                    Navigator.push(context, MaterialPageRoute(builder:(context)=> HomeScreen()));
                   }
                   
 
-            }, child: child)
+            }, child: Text(
+                "Register",
+            style: TextStyle(
+              color: Colors.indigo,
+              fontSize: 18
+            ),)),
+            SizedBox(
+              height: 20,
+
+            ),
+            Text('OR',
+            style: TextStyle(color: Colors.white,
+            fontSize: 18),),
+            SizedBox(height: 20,),
+           TextButton(onPressed: () {
+             Navigator.push(context, MaterialPageRoute(builder: (context)=> LoginPage()));
+
+           }, child: Text(
+             "Login",
+             style: TextStyle(
+                 color: Colors.indigo,
+                 fontSize: 18
+             ),)),
+
           ],
         )
           ,),

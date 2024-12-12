@@ -1,29 +1,117 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-class login extends StatefulWidget {
-  const login({super.key});
+import 'package:todo_firebase_app/screens/services/auth_service.dart';
+import 'package:todo_firebase_app/screens/signup.dart';
 
-  @override
-  State<login> createState() => _loginState();
-}
+import 'home_screen.dart';
+class LoginPage extends StatelessWidget {
 
-class _loginState extends State<login> {
+  final AuthService _auth = AuthService();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passController = TextEditingController();
+
+
+  LoginPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF1d2630),
       appBar: AppBar(
-        title: Text("Eshwar"),
+        backgroundColor: Color(0xFF1d2630),
+        foregroundColor: Colors.white,
+        title: Text("Login Here"),
       ),
-      body:Padding(
+      body: SingleChildScrollView(
+        child: Padding(
           padding: EdgeInsets.all(20),
-      child: Column(
-        children: [
-          Text("Eshwar"),
-          const SizedBox(height: 20),
-          Text("Eshwar"),
+          child: Column(
+            children: [
+              SizedBox(height: 50),
+              Text("Register here",
+                style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white
+                ),
 
-        ],
+              ),
+              const SizedBox(
+                height: 30,
+              ),
 
-      ),) ,
+              TextField(
+                controller: _emailController,
+                style: TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    labelText: "Email",
+                    labelStyle: TextStyle(
+                        color: Colors.white60
+                    )
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              TextField(
+                controller: _passController,
+                style: TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    labelText: "Password",
+                    labelStyle: TextStyle(
+                        color: Colors.white60
+                    )
+                ),
+              ),
+              SizedBox(height: 50,
+                width: MediaQuery.of(context).size.width/1.5,
+
+              ),
+              ElevatedButton(
+                  onPressed: () async {
+                    User? user = await _auth.signInWithEmailAndPassword(
+                        _emailController.text,
+                        _passController.text );
+                    if(user != null) {
+                      Navigator.push(context, MaterialPageRoute(builder:(context)=> HomeScreen()));
+                    }
+
+
+                  }, child: Text(
+                "Login",
+                style: TextStyle(
+                    color: Colors.indigo,
+                    fontSize: 18
+                ),)),
+              SizedBox(
+                height: 20,
+
+              ),
+              Text('OR',
+                style: TextStyle(color: Colors.white,
+                    fontSize: 18),),
+              SizedBox(height: 20,),
+              TextButton(onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> SignupScreen()));
+
+              }, child: Text(
+                "Create Account",
+                style: TextStyle(
+                    color: Colors.indigo,
+                    fontSize: 18
+                ),)),
+            ],
+          )
+          ,),
+
+
+      ),
     );
   }
 }

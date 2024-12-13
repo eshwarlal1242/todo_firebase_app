@@ -1,25 +1,35 @@
-import 'package:flutter/material.dart';
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-
-  int _buttonIndex = 0;
-
-  final Widgets = [
-    Container()
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: Text("HomePage"),
-      ),
-    );
-  }
-}
+// import 'package:flutter/material.dart';
+// import 'package:todo_firebase_app/screens/services/auth_service.dart';
+//
+// class Home extends StatefulWidget {
+//   const Home({Key? key, required this.email}) : super(key: key);
+//   final String email;
+//   @override
+//   State<Home> createState() => _HomeState();
+// }
+//
+// class _HomeState extends State<Home> {
+//   String name = '';
+//   @override
+//   void initState() {
+//     super.initState();
+//     getData();
+//   }
+//
+//   void getData() async {
+//     name = (await DatabaseService().getUser(widget.email))!;
+//     setState(() {});
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Home'),
+//       ),
+//       body: Center(
+//         child: Text('Welcome $name!'),
+//       ),
+//     );
+//   }
+// }

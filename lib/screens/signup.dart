@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:todo_firebase_app/screens/home_screen.dart';
 import 'package:todo_firebase_app/screens/login.dart';
 import 'package:todo_firebase_app/screens/services/auth_service.dart';
 class SignupPage extends StatefulWidget {
